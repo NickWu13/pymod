@@ -34,5 +34,7 @@ jobs:
           java-version: "25"
       - name: Install
         run: pip install -e ".[test]"
+      - name: Make Gradle executable
+        run: chmod +x tools/gradle-dist/gradle-9.7.0/bin/gradle
       - name: Real deps compile check
         run: PYMOD_RUN_FABRIC_BUILD=1 pytest -q tests/test_fabric_build.py
