@@ -13,3 +13,6 @@ tools/*.jar
 # Generated output
 out/
 *.pymod-build.log
+
+#agents
+.claude/settings.local.json
