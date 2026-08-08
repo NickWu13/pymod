@@ -1,0 +1,39 @@
+{
+  "_comment": "Single source of truth for every MC-version-sensitive fact. Nothing here may be hardcoded in codegen -- generators read profiles from this file keyed by the pinned game version.",
+  "default": "26.2",
+  "profiles": {
+    "26.2": {
+      "game_version": "26.2",
+      "release": "2026-06-16",
+      "userspace_name": "混沌立方 (Chaos Cube)",
+      "data_channel": "stable",
+      "java_version": "25",
+      "minecraft_internal": {
+        "pack_version": {
+          "resource_major": 88,
+          "resource_minor": 0,
+          "data_major": 107,
+          "data_minor": 1
+        },
+        "world_version": 4903,
+        "protocol_version": 776
+      },
+      "fabric": {
+        "loader_version": "0.19.3",
+        "fabric_api_version": "0.156.0+26.2",
+        "mappings": "named-jar",
+        "mappings_note": "26.x is post-obfuscation: Mojang ships a NAMED (de-obfuscated) client jar. No yarn / mojang mapping files exist for 26.2. Fabric's intermediary-26.2.jar is an empty identity map (v1 official intermediary). Loom gets a generated 3-column identity tiny (official->intermediary->named) and remapSourcesJar is disabled. VERIFIED 2026-08-08: generated project compiles with gradle build on real 26.2 deps.",
+        "loom_version": "1.17.19",
+        "loom_note": "loom 1.17.19 = latest stable on maven.fabricmc.net (verified 2026-08-06; 1.18.0 is alpha)",
+        "intermediary": true,
+        "gradle": "9.7.0",
+        "gradle_note": "gradle 9.x required to run on JDK 26 (8.14's embedded kotlin fails parsing the 26.0.1 java version)"
+      },
+      "pack": {
+        "data_format": 107,
+        "resource_format": 88,
+        "provenance": "Read from Mojang's shipped 26.2 client jar: version.json pack_version = {data_major:107, data_minor:1, resource_major:88}, cross-checked against built-in experimental datapacks (minecart_improvements / redstone_experiments / trade_rebalance) whose pack.mcmeta declares max_format 107 / min_format [107,1]. Verified 2026-08-06."
+      }
+    }
+  }
+}

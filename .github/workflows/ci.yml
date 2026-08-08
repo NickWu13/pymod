@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: pip install -e ".[test]"
+      - name: Test
+        run: pytest -q
+
+  # The real Fabric compile check is gated (PYMOD_RUN_FABRIC_BUILD=1) because it
+  # downloads Gradle + the 26.2 dependency set; run it on a schedule or as an
+  # opt-in branch.
+  fabric-build:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+      - name: Install
+        run: pip install -e ".[test]"
+      - name: Real deps compile check
+        run: PYMOD_RUN_FABRIC_BUILD=1 pytest -q tests/test_fabric_build.py

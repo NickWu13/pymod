@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import ast,json,sys; print\\('stdlib ok', sys.version\\)\")",
+      "Bash(python -c \"import urllib.request as u; print\\(u.urlopen\\('https://example.com', timeout=8\\).status\\)\")",
+      "Bash(python -m pip install -e . -q)",
+      "Bash(python -m pymod --help)",
+      "Bash(python -m pymod check examples/chaos.py)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(python -m pymod check examples/chaos.py --target datapack)",
+      "Bash(rm -rf /tmp/pyout)",
+      "Bash(python -m pymod generate examples/chaos.py --target datapack --out /tmp/pyout --pack-format 1)",
+      "Read(//tmp/**)",
+      "Bash(python -m pytest tests/ -v)",
+      "Bash(python -m pip install -e \".[test]\" -q)",
+      "Bash(python -m pymod generate examples/ifelse.py --target datapack --out /tmp/pe --pack-format 1)",
+      "Bash(python -m pymod generate examples/chaos.py --target datapack --out /tmp/px)",
+      "Bash(python -m pymod generate examples/chaos.py --target kubejs --out /tmp/pk)",
+      "Bash(python -m pymod generate examples/chaos.py --target fabric --out /tmp/pf)",
+      "Bash([ -f \"$MEM\" ])",
+      "WebFetch(domain:minecraft.wiki)",
+      "Bash(python -m pymod check examples/chaos.py --target kubejs)",
+      "Bash(python -m pymod generate examples/kubejs_demo.py --target kubejs --out /tmp/pkj)",
+      "Bash(python -m pymod generate examples/chaos.py -t datapack -o /tmp/pd)",
+      "Bash(python -m pymod generate examples/kubejs_demo.py -t kubejs -o /tmp/pk)",
+      "Bash(python -m pymod generate examples/ifelse.py -t kubejs -o /tmp/pi)",
+      "Bash(python -m pymod generate examples/chaos.py -t datapack -o /tmp/pc)",
+      "Bash(python -m pytest tests/ -q)",
+      "Bash(rm -rf /tmp/pfab)",
+      "Bash(python -m pymod generate examples/fabric_demo.py -t fabric -o /tmp/pfab)",
+      "Bash(python *)"
+    ]
+  }
+}

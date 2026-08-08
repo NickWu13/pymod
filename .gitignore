@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# Local tool artifacts (downloaded Gradle dist, cached MC jar)
+tools/gradle-dist/
+tools/*.jar
+
+# Generated output
+out/
+*.pymod-build.log
