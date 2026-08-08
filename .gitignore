@@ -16,3 +16,4 @@ out/
 
 #agents
 .claude/settings.local.json
+.claude-history
